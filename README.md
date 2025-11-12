@@ -23,6 +23,3 @@ The system provides:
 - **Testing:** JUnit, Mockito 
 
 ---
-
-## Project Structure
-
