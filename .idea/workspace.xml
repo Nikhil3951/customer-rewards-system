@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb52c6c6-4459-4ab5-9d18-6a7dad1980a9" name="Changes" comment="Added the controller,service,entity classes and db configurations">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/retail/rewards/service/RewardServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/retail/rewards/controller/RewardControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/retail/rewards/controller/RewardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/controller/RewardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/retail/rewards/service/RewardServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/retail/rewards/service/RewardServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,10 +53,12 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Application.executor": "Run",
+    "JUnit.RewardControllerTest.executor": "Coverage",
     "JUnit.RewardServiceTest.executor": "Coverage",
     "JUnit.RewardServiceTest.testEmptyTransactions.executor": "Coverage",
     "JUnit.RewardServiceTest.testGetRewards.executor": "Coverage",
     "JUnit.RewardServiceTest.testInvalidCustomer.executor": "Debug",
+    "JUnit.com.retail.rewards in customer-rewards-system.executor": "Coverage",
     "Maven.customer-rewards-system [install].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
@@ -74,13 +77,29 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.retail.rewards.controller" />
       <recent name="com.retail.rewards.service" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RewardServiceTest">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.retail.rewards.CustomerRewardsApplication" />
       <module name="customer-rewards-system" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RewardControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="customer-rewards-system" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.retail.rewards.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.retail.rewards.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.retail.rewards.controller.RewardControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -116,22 +135,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RewardServiceTest.testGetRewards" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="customer-rewards-system" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.retail.rewards.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.retail.rewards.service" />
-      <option name="MAIN_CLASS_NAME" value="com.retail.rewards.service.RewardServiceTest" />
-      <option name="METHOD_NAME" value="testGetRewards" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="RewardServiceTest.testInvalidCustomer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="customer-rewards-system" />
       <extension name="coverage">
@@ -148,12 +151,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="com.retail.rewards in customer-rewards-system" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="customer-rewards-system" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.retail.rewards.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.retail.rewards" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RewardControllerTest" />
+        <item itemvalue="JUnit.com.retail.rewards in customer-rewards-system" />
         <item itemvalue="JUnit.RewardServiceTest" />
         <item itemvalue="JUnit.RewardServiceTest.testEmptyTransactions" />
         <item itemvalue="JUnit.RewardServiceTest.testInvalidCustomer" />
-        <item itemvalue="JUnit.RewardServiceTest.testGetRewards" />
       </list>
     </recent_temporary>
   </component>
@@ -222,11 +240,6 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/retail/rewards/controller/RewardController.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/retail/rewards/Exception/GlobalExceptionHandler.java</url>
           <line>30</line>
           <option name="timeStamp" value="8" />
@@ -235,6 +248,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/retail/rewards/service/RewardService.java</url>
           <line>36</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/retail/rewards/controller/RewardController.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -249,8 +267,14 @@
     <SUITE FILE_PATH="coverage/customer_rewards_system$RewardServiceTest_testInvalidCustomer.ic" NAME="RewardServiceTest.testInvalidCustomer Coverage Results" MODIFIED="1762952568741" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.retail.rewards.service.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/customer_rewards_system$RewardServiceTest.ic" NAME="RewardServiceTest Coverage Results" MODIFIED="1762953544139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/customer_rewards_system$com_retail_rewards_in_customer_rewards_system.ic" NAME="com.retail.rewards in customer-rewards-system Coverage Results" MODIFIED="1762966180010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.retail.rewards.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/customer_rewards_system$RewardServiceTest.ic" NAME="RewardServiceTest Coverage Results" MODIFIED="1762964478503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.retail.rewards.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/customer_rewards_system$RewardControllerTest.ic" NAME="RewardControllerTest Coverage Results" MODIFIED="1762966404292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.retail.rewards.controller.*</FILTER>
     </SUITE>
   </component>
 </project>

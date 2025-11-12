@@ -43,9 +43,9 @@ class RewardServiceTest {
         LocalDate toDate = LocalDate.parse("2025-10-11");
         Optional<Customers> customer = Optional.of(mockCustomer());
         when(customersRepository.findById(customerId)).thenReturn(customer);
-        when(transactionsRepository.findByCustomerIdAndTransactionDateBetween(customerId, fromDate, toDate)).thenReturn(mockTransactions());
+        when(transactionsRepository.findByCustomerIdAndTransactionDateBetween(customerId, fromDate, toDate)).thenReturn(mockTransactionswithRange());
         RewardsResponseDTO rewards = rewardService.getRewards(customerId, fromDate, toDate);
-        Assertions.assertEquals(195,rewards.getTotalRewardPoints());
+        Assertions.assertEquals(160,rewards.getTotalRewardPoints());
         Assertions.assertEquals(customerId,"CUST001");
         Assertions.assertEquals(rewards.getCustomerName(),"John Dae");
         Assertions.assertEquals(rewards.getCustomerEmail(),"johndae@gmail.com");
@@ -95,6 +95,15 @@ class RewardServiceTest {
         customer.setName("John Dae");
         customer.setEmail("johndae@gmail.com");
         return customer;
+    }
+
+    private List<Transactions> mockTransactionswithRange(){
+        Transactions transactionOne = new Transactions();
+        transactionOne.setAmount(155.0);
+        transactionOne.setTransactionId("TRNX01");
+        transactionOne.setTransactionDate(LocalDate.parse("2025-10-10"));
+        transactionOne.setCustomerId("CUST001");
+        return Collections.singletonList(transactionOne);
     }
 
     private List<Transactions> mockTransactions() {

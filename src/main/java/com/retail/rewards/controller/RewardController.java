@@ -20,6 +20,8 @@ public class RewardController {
     @GetMapping("/rewards/{customerId}")
     public ResponseEntity<?> getRewards(@PathVariable String customerId, @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fromDate , @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate toDate) throws Exception {
         LocalDate today = LocalDate.now();
+        if(fromDate!=null && toDate!=null && fromDate.isAfter(toDate))
+            throw new IllegalArgumentException("From Date cannot be after to Date...");
         if(fromDate!=null && toDate!=null && (fromDate.isBefore(today.minusDays(90)) || toDate.isAfter(today)))
             throw new IllegalArgumentException("Date range cannot exceed last 90 days or be in the future..");
         RewardsResponseDTO rewards = rewardService.getRewards(customerId,fromDate,toDate);
