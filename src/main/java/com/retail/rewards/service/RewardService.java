@@ -15,11 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,7 +37,12 @@ public class RewardService {
         Customers customer = customersRepository.findById(customerId)
                 .orElseThrow(() -> new CustomerNotFoundException("Customer not found: " + customerId,customerId));
         log.info("Customer details :: {}", customer);
-        List<Transactions> transactions = fetchTransactions(customerId, fromDate, toDate);
+        CompletableFuture<List<Transactions>> future = fetchTransactionsAsync(customerId, fromDate, toDate);
+        List<Transactions> transactions = future.join();
+        if (transactions == null || transactions.isEmpty()) {
+            log.warn("No transactions found for customer {} in the given date range", customerId);
+            throw new TransactionsNotFoundException("No transactions found for customer " + customerId, customerId);
+        }
         List<TransactionsDTO> transactionDetails = transactions.stream()
                 .map(
                         transaction -> new TransactionsDTO(
@@ -69,20 +74,25 @@ public class RewardService {
         );
     }
 
-    private List<Transactions> fetchTransactions(String customerId, LocalDate fromDate, LocalDate toDate) {
-        List<Transactions> transactions;
-        if (toDate != null && fromDate != null) {
-            log.info("Fetching the customer transaction details from {} to {}", fromDate, toDate);
-            transactions = transactionsRepository.findByCustomerIdAndTransactionDateBetween(customerId, fromDate, toDate);
-        } else {
-            log.info("Fetching all transactions for customer {} (no date range)", customerId);
-            transactions = transactionsRepository.findByCustomerId(customerId);
-        }
-        if (transactions == null || transactions.isEmpty()) {
-            log.warn("No transactions found for customer {} in the given date range", customerId);
-            throw new TransactionsNotFoundException("No transactions found for customer " + customerId, customerId);
-        }
-        return transactions;
+    private CompletableFuture<List<Transactions>> fetchTransactionsAsync(String customerId, LocalDate fromDate, LocalDate toDate) {
+        return CompletableFuture.supplyAsync(()-> {
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception ex) {
+                    Thread.currentThread().interrupt();
+                    log.error("Thread interrupted while fetching transactions for customer: {}", customerId, ex);
+                }
+                List<Transactions> transactions;
+                if (toDate != null && fromDate != null) {
+                    log.info("Fetching the customer transaction details from {} to {}", fromDate, toDate);
+                    transactions = transactionsRepository.findByCustomerIdAndTransactionDateBetween(customerId, fromDate, toDate);
+                } else {
+                    log.info("Fetching all transactions for customer {} (no date range)", customerId);
+                    transactions = transactionsRepository.findByCustomerId(customerId);
+                }
+                return transactions;
+            }
+        );
     }
 
     private int calculateRewards(Double amount) {
