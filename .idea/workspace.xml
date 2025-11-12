@@ -5,24 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb52c6c6-4459-4ab5-9d18-6a7dad1980a9" name="Changes" comment="Added the controller,service,entity classes and db configurations">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/Exception/CustomerNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/Exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/Exception/TransactionsNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/constants/Month.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/dto/ErrorDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/dto/RewardsResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/dto/TransactionsDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/retail/rewards/service/RewardServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/retail/rewards/controller/RewardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/controller/RewardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/retail/rewards/entity/Customers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/entity/Customers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/retail/rewards/entity/Transactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/entity/Transactions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/retail/rewards/repository/CustomersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/repository/CustomersRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/retail/rewards/repository/TransactionsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/repository/TransactionsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/retail/rewards/service/RewardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/service/RewardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dbscripts/V1__create_customer_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dbscripts/V1__create_customer_table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dbscripts/V2__create_transactions_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dbscripts/V2__create_transactions_table.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +20,7 @@
         <option value="Interface" />
         <option value="Class" />
         <option value="Enum" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -66,8 +52,14 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Application.executor": "Run",
+    "JUnit.RewardServiceTest.executor": "Coverage",
+    "JUnit.RewardServiceTest.testEmptyTransactions.executor": "Coverage",
+    "JUnit.RewardServiceTest.testGetRewards.executor": "Coverage",
+    "JUnit.RewardServiceTest.testInvalidCustomer.executor": "Debug",
     "Maven.customer-rewards-system [install].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/gulla/projects/Hellow-World",
     "onboarding.tips.debug.path": "C:/Users/gulla/Desktop/java assignment/customer-rewards-system/src/main/java/com/retail/rewards/Main.java",
@@ -77,7 +69,15 @@
     "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.retail.rewards.service" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.RewardServiceTest">
     <configuration name="Application" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.retail.rewards.CustomerRewardsApplication" />
       <module name="customer-rewards-system" />
@@ -85,6 +85,77 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RewardServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="customer-rewards-system" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.retail.rewards.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.retail.rewards.service" />
+      <option name="MAIN_CLASS_NAME" value="com.retail.rewards.service.RewardServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RewardServiceTest.testEmptyTransactions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="customer-rewards-system" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.retail.rewards.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.retail.rewards.service" />
+      <option name="MAIN_CLASS_NAME" value="com.retail.rewards.service.RewardServiceTest" />
+      <option name="METHOD_NAME" value="testEmptyTransactions" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RewardServiceTest.testGetRewards" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="customer-rewards-system" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.retail.rewards.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.retail.rewards.service" />
+      <option name="MAIN_CLASS_NAME" value="com.retail.rewards.service.RewardServiceTest" />
+      <option name="METHOD_NAME" value="testGetRewards" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RewardServiceTest.testInvalidCustomer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="customer-rewards-system" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.retail.rewards.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.retail.rewards.service" />
+      <option name="MAIN_CLASS_NAME" value="com.retail.rewards.service.RewardServiceTest" />
+      <option name="METHOD_NAME" value="testInvalidCustomer" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.RewardServiceTest" />
+        <item itemvalue="JUnit.RewardServiceTest.testEmptyTransactions" />
+        <item itemvalue="JUnit.RewardServiceTest.testInvalidCustomer" />
+        <item itemvalue="JUnit.RewardServiceTest.testGetRewards" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -137,17 +208,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/retail/rewards/service/RewardService.java</url>
-          <line>37</line>
+          <line>38</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/retail/rewards/service/RewardService.java</url>
-          <line>60</line>
+          <line>61</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/retail/rewards/service/RewardService.java</url>
-          <line>49</line>
+          <line>50</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -160,7 +231,26 @@
           <line>30</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/retail/rewards/service/RewardService.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/customer_rewards_system$RewardServiceTest_testEmptyTransactions.ic" NAME="RewardServiceTest.testEmptyTransactions Coverage Results" MODIFIED="1762952822440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.retail.rewards.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/customer_rewards_system$RewardServiceTest_testGetRewards.ic" NAME="RewardServiceTest.testGetRewards Coverage Results" MODIFIED="1762952215669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.retail.rewards.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/customer_rewards_system$RewardServiceTest_testInvalidCustomer.ic" NAME="RewardServiceTest.testInvalidCustomer Coverage Results" MODIFIED="1762952568741" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.retail.rewards.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/customer_rewards_system$RewardServiceTest.ic" NAME="RewardServiceTest Coverage Results" MODIFIED="1762953544139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.retail.rewards.service.*</FILTER>
+    </SUITE>
   </component>
 </project>
