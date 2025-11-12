@@ -4,19 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb52c6c6-4459-4ab5-9d18-6a7dad1980a9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/controller/RewardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/entity/Customers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/entity/Transactions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/repository/CustomersRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/repository/TransactionsRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/service/RewardService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/dbscripts/V1__create_customer_table.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/dbscripts/V2__create_transactions_table.sql" afterDir="false" />
+    <list default="true" id="bb52c6c6-4459-4ab5-9d18-6a7dad1980a9" name="Changes" comment="Added the controller,service,entity classes and db configurations">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/Exception/CustomerNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/Exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/Exception/TransactionsNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/constants/Month.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/dto/ErrorDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/dto/RewardsResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/dto/TransactionsDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/retail/rewards/CustomerRewardsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/CustomerRewardsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/retail/rewards/controller/RewardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/controller/RewardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/retail/rewards/entity/Customers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/entity/Customers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/retail/rewards/entity/Transactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/entity/Transactions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/retail/rewards/repository/CustomersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/repository/CustomersRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/retail/rewards/repository/TransactionsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/repository/TransactionsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/retail/rewards/service/RewardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/retail/rewards/service/RewardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/dbscripts/V1__create_customer_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dbscripts/V1__create_customer_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/dbscripts/V2__create_transactions_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dbscripts/V2__create_transactions_table.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,10 +34,16 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Nikhil &lt;gulla.venkatanikhil01@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
@@ -53,7 +65,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Application.executor": "Debug",
+    "Application.Application.executor": "Run",
     "Maven.customer-rewards-system [install].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "kotlin-language-version-configured": "true",
@@ -62,7 +74,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "MavenSettings"
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
 }]]></component>
   <component name="RunManager">
@@ -83,7 +95,32 @@
       <option name="presentableId" value="Default" />
       <updated>1762768233074</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added the controller,service,entity classes and db configurations">
+      <option name="closed" value="true" />
+      <created>1762865801306</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762865801306</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added the controller , service and db configurations" />
+    <MESSAGE value="Added the controller,service,entity classes and db configurations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the controller,service,entity classes and db configurations" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -95,13 +132,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/retail/rewards/entity/Customers.java</url>
-          <line>11</line>
+          <line>13</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/retail/rewards/service/RewardService.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="3" />
+          <line>37</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/retail/rewards/service/RewardService.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/retail/rewards/service/RewardService.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/retail/rewards/controller/RewardController.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/retail/rewards/Exception/GlobalExceptionHandler.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,18 +1,19 @@
 package com.retail.rewards.entity;
 
-import jdk.nashorn.internal.objects.annotations.Getter;
-import jdk.nashorn.internal.objects.annotations.Setter;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "customers")
 public class Customers {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "customer_id")
-    private Long id;
+    private String customerId;
 
     @Column(name = "customer_name")
     private String name;
@@ -20,21 +21,13 @@ public class Customers {
     @Column(name = "customer_email")
     private String email;
 
-    public void setName(String name){
-        this.name = name;
+    @Override
+    public String toString() {
+        return "{\n" +
+                "    \"customerId\": " + customerId + ",\n" +
+                "    \"Name\" : " + name + ",\n" +
+                "    \"Email\": " + email + "\n" +
+                "}";
     }
-
-    public String getName(){
-        return name;
-    }
-
-    public void setEmail(String email){
-        this.email = email;
-    }
-
-    public String getEmail(){
-        return email;
-    }
-
 
 }
