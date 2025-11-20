@@ -14,12 +14,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,12 +37,7 @@ public class RewardService {
         Customers customer = customersRepository.findById(customerId)
                 .orElseThrow(() -> new CustomerNotFoundException("Customer not found: " + customerId,customerId));
         log.info("Customer details :: {}", customer);
-        CompletableFuture<List<Transactions>> future = fetchTransactionsAsync(customerId, fromDate, toDate);
-        List<Transactions> transactions = future.join();
-        if (transactions == null || transactions.isEmpty()) {
-            log.warn("No transactions found for customer {} in the given date range", customerId);
-            throw new TransactionsNotFoundException("No transactions found for customer " + customerId, customerId);
-        }
+        List<Transactions> transactions = fetchTransactions(customerId, fromDate, toDate);
         List<TransactionsDTO> transactionDetails = transactions.stream()
                 .map(
                         transaction -> new TransactionsDTO(
@@ -74,35 +69,30 @@ public class RewardService {
         );
     }
 
-    private CompletableFuture<List<Transactions>> fetchTransactionsAsync(String customerId, LocalDate fromDate, LocalDate toDate) {
-        return CompletableFuture.supplyAsync(()-> {
-                try {
-                    Thread.sleep(1000);
-                } catch (Exception ex) {
-                    Thread.currentThread().interrupt();
-                    log.error("Thread interrupted while fetching transactions for customer: {}", customerId, ex);
-                }
-                List<Transactions> transactions;
-                if (toDate != null && fromDate != null) {
-                    log.info("Fetching the customer transaction details from {} to {}", fromDate, toDate);
-                    transactions = transactionsRepository.findByCustomerIdAndTransactionDateBetween(customerId, fromDate, toDate);
-                } else {
-                    log.info("Fetching all transactions for customer {} (no date range)", customerId);
-                    transactions = transactionsRepository.findByCustomerId(customerId);
-                }
-                return transactions;
-            }
-        );
+    private List<Transactions> fetchTransactions(String customerId, LocalDate fromDate, LocalDate toDate) {
+        List<Transactions> transactions;
+        if (toDate != null && fromDate != null) {
+            log.info("Fetching the customer transaction details from {} to {}", fromDate, toDate);
+            transactions = transactionsRepository.findByCustomerIdAndTransactionDateBetween(customerId, fromDate, toDate);
+        } else {
+            log.info("Fetching all transactions for customer {} (no date range)", customerId);
+            transactions = transactionsRepository.findByCustomerId(customerId);
+        }
+        if (transactions == null || transactions.isEmpty()) {
+            log.warn("No transactions found for customer {} in the given date range", customerId);
+            throw new TransactionsNotFoundException("No transactions found for customer " + customerId, customerId);
+        }
+        return transactions;
     }
 
-    private int calculateRewards(Double amount) {
+    private int calculateRewards(BigDecimal amount) {
         int totalPoints = 0;
-        if (amount > 100) {
-            totalPoints += (int)((amount - 100) * 2);
-            amount = 100.0;
+        if (amount.doubleValue() > 100) {
+            totalPoints += (int)((amount.doubleValue() - 100) * 2);
+            amount = BigDecimal.valueOf(100.0);
         }
-        if (amount >= 50)
-            totalPoints += (int) (amount - 50);
+        if (amount.doubleValue() >= 50)
+            totalPoints += (int) (amount.doubleValue() - 50);
         return totalPoints;
     }
 }
