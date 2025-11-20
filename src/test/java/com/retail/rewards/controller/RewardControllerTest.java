@@ -11,6 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,7 +78,7 @@ class RewardControllerTest {
         List<TransactionsDTO> transactionDetails = new ArrayList<>();
         transactionDetails.add(
                 new TransactionsDTO(
-                        70.0,
+                        BigDecimal.valueOf(70.0),
                         "TRNX01",
                         LocalDate.parse("2025-10-13"),
                         20
@@ -85,7 +86,7 @@ class RewardControllerTest {
         );
         transactionDetails.add(
                 new TransactionsDTO(
-                        62.0,
+                        BigDecimal.valueOf(62.0),
                         "TRNX01",
                         LocalDate.parse("2025-11-11"),
                         12
