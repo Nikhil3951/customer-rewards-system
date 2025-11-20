@@ -14,8 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.util.Assert;
-
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
@@ -99,7 +98,7 @@ class RewardServiceTest {
 
     private List<Transactions> mockTransactionswithRange(){
         Transactions transactionOne = new Transactions();
-        transactionOne.setAmount(155.0);
+        transactionOne.setAmount(BigDecimal.valueOf(155.0));
         transactionOne.setTransactionId("TRNX01");
         transactionOne.setTransactionDate(LocalDate.parse("2025-10-10"));
         transactionOne.setCustomerId("CUST001");
@@ -108,13 +107,13 @@ class RewardServiceTest {
 
     private List<Transactions> mockTransactions() {
         Transactions transactionOne = new Transactions();
-        transactionOne.setAmount(155.0);
+        transactionOne.setAmount(BigDecimal.valueOf(155.0));
         transactionOne.setTransactionId("TRNX01");
         transactionOne.setTransactionDate(LocalDate.parse("2025-10-10"));
         transactionOne.setCustomerId("CUST001");
 
         Transactions transactionTwo = new Transactions();
-        transactionTwo.setAmount(85.0);
+        transactionTwo.setAmount(BigDecimal.valueOf(85.0));
         transactionTwo.setTransactionId("TRNX02");
         transactionTwo.setTransactionDate(LocalDate.parse("2025-11-11"));
         transactionTwo.setCustomerId("CUST002");
