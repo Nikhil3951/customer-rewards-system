@@ -3,7 +3,9 @@ package com.retail.rewards.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -21,7 +23,7 @@ public class Transactions {
     private String customerId;
 
     @Column(name = "transaction_amount")
-    private Double amount;
+    private BigDecimal amount;
 
     @Column(name = "transaction_date")
     private LocalDate transactionDate;
