@@ -24,7 +24,7 @@ The system provides:
 - **Testing:** JUnit, Mockito
 
 ---
-## API Specification
+## API Specifications
 
 **Endpoint:** **GET /api/transactions/rewards/{customerId}**
 
