@@ -37,7 +37,7 @@ The system provides:
 - todate(Not mandatory) - Should not go beyond 90 days.
 - fromDate(Not mandatory) - Should not be future date.
 
-**Sample Response:**
+**Sample Response:** 
 ```json
 {
     "customerId": "sampleId",
