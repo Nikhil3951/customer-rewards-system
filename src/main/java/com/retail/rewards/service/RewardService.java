@@ -1,7 +1,7 @@
 package com.retail.rewards.service;
 
-import com.retail.rewards.exception.CustomerNotFoundException;
-import com.retail.rewards.exception.TransactionsNotFoundException;
+import com.retail.rewards.Exception.CustomerNotFoundException;
+import com.retail.rewards.Exception.TransactionsNotFoundException;
 import com.retail.rewards.constants.Month;
 import com.retail.rewards.dto.RewardsResponseDTO;
 import com.retail.rewards.dto.TransactionsDTO;
