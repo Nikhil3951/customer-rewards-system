@@ -1,4 +1,4 @@
-package com.retail.rewards.Exception;
+package com.retail.rewards.exception;
 
 import com.retail.rewards.dto.ErrorDetails;
 import org.springframework.http.HttpStatus;
