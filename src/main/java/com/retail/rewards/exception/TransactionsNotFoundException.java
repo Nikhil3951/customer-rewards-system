@@ -1,4 +1,4 @@
-package com.retail.rewards.Exception;
+package com.retail.rewards.exception;
 
 import lombok.Getter;
 
